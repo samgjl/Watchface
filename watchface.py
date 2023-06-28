@@ -17,11 +17,17 @@ from kivy.config import Config
 from datetime import date
 from datetime import datetime
 
+
+# CONSIDER USING RelativeWindow!
+# Consider USING RelativeLayout!
+
+
 # Declare window size:
-# Config.set('graphics', 'width', '320')
-# Config.set('graphics', 'height', '480')
-# Config.write()
-Window.size = (320, 480)
+Config.set('graphics', 'width', '320')
+Config.set('graphics', 'height', '480')
+Config.set('graphics', 'resizable', False)
+Config.write()
+# Window.size = (320, 480)
 LabelBase.register(name='Glitchy', fn_regular='GlitchGoblin.ttf') # Font
 
 # Helper Functions:
@@ -33,11 +39,11 @@ def get_time():
 class ClockWidget(Label):
     num = 0
     def update(self, *args):
-        self.texts = ["-1218         ", 
-                      "-1610         ", 
-                      "-42           ", 
-                      "-65           ", 
-                      "-" + get_time() + "   "]
+        self.texts = ["-1218             ", 
+                      "-1610             ", 
+                      "-42               ", 
+                      "-65               ", 
+                      "-" + get_time() + "       "]
         self.text = self.texts[self.num % len(self.texts)]
 
     def on_touch_down(self, touch):
@@ -71,16 +77,16 @@ class WatchFace(BoxLayout):
         # image = Image(source='flag__img.png')
         layout.add_widget(image)
 
-        clock = ClockWidget(pos_hint={'x': -0.25, 'y': 0, 'center_x': 0.5, 'center_y': .5}, 
-                                 font_size=30, 
+        clock = ClockWidget(pos_hint={'x': 0, 'y': 0, 'center_x': 0.0}, 
+                                 font_size=28, 
                                  color=(21/255, 230/255, 250/255, 1),
-                                 font_name="Glitchy"
-                                 ) # background_color=(0,0,0,1) <-- For Button
-        Clock.schedule_interval(clock.update, 1.0 / 5.0)
-        # layout.add_widget(clock) 
-         
-        mini = BoxLayout(orientation="horizontal")
-        destination = Image(source="destination.png", fit_mode="scale-down")
+                                 font_name="Glitchy",
+                                 )
+        Clock.schedule_interval(clock.update, 1.0 / 5.0)         
+        mini = BoxLayout(orientation="horizontal", pos_hint={'x':0.05, 'y':0})
+        destination = Image(source="destination.png", 
+                            fit_mode="scale-down",
+                            )
         mini.add_widget(destination)
         mini.add_widget(clock)
         layout.add_widget(mini)
