@@ -1,41 +1,48 @@
+import kivy
 from kivy.app import App
 from kivy.uix.label import Label
-from kivy.uix.image import Image
+from kivy.core.window import Window
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.widget import Widget
+from kivy.clock import Clock
 import datetime
 from datetime import date
 from datetime import datetime
 
 
-def take_date():
-        # Today's Date (in )
-        current_day = date.today()
-        m_d_y = current_day.strftime("%d|%m|%Y")
-        return m_d_y
-def take_time():
-    # Current time (PST)
-    pst_time = datetime.now()
-    h_m_s = pst_time.strftime("%H-%M-%S")
-    return h_m_s
+# Declare window size:
+Window.size = (400, 700)
 
-class MainApp(App):
-    # Build
-    def build(self):
-        # Text:
-        time = take_time()
+# Helper Functions:
+def get_date():
+    return date.today().strftime("%d/%m/%Y")
+def get_time():
+    return datetime.now().strftime("%H-%M-%S")
 
-        label = Label(text="Destination: " + time,
-                      size_hint=(.5, .5),
-                      pos_hint={'center_x':.5, 'center_y': .25})
+class ClockWidget(Label):
+    num = 0
+    def update(self, *args): 
+        self.texts = ["Destination: 42", "Destination: 1610", "Destination: " + get_time()]
+        self.text = self.texts[self.num % len(self.texts)]
         
-        # Image:
-        img = Image(source='flag_img.png',
-                    size_hint=(1, .5),
-                    pos_hint={'center_x':.5, 'center_y':.5})
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.num += 1
+            self.clear_widgets()
 
-        # return img
 
-        return label
+class HelloWorldApp(App):
+    def build(self):
+        self.layout = BoxLayout(orientation='vertical')
 
-if __name__ == '__main__':
-    app = MainApp()
-    app.run()
+        self.ptoject_bootleg = Label(text="Project: Bootleg")
+        self.layout.add_widget(self.ptoject_bootleg)
+
+        self.clock = ClockWidget(pos_hint={'x': 0, 'y': 1, 'center_x': .5, 'center_y': .5}, font_size=30)
+        Clock.schedule_interval(self.clock.update, 1.0 / 60.0)
+        self.layout.add_widget(self.clock)     
+
+        return self.layout
+        
+if __name__ == "__main__":
+    HelloWorldApp().run()
