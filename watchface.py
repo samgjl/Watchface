@@ -5,7 +5,7 @@ from kivy.uix.label import Label
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 from kivy.core.window import Window
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
@@ -16,11 +16,6 @@ from kivy.config import Config
 # Date/Time
 from datetime import date
 from datetime import datetime
-
-
-# CONSIDER USING RelativeWindow!
-# Consider USING RelativeLayout!
-
 
 # Declare window size:
 Config.set('graphics', 'width', '320')
@@ -39,94 +34,67 @@ def get_time():
 class ClockWidget(Label):
     num = 0
     def update(self, *args):
-        self.texts = ["-1218             ", 
+        self.texts = ["-" + get_time() + "       ",
+                      "-1218             ", 
                       "-1610             ", 
                       "-42               ", 
-                      "-65               ", 
-                      "-" + get_time() + "       "]
+                      "-65               "]
         self.text = self.texts[self.num % len(self.texts)]
 
     def on_touch_down(self, touch):
             if True or self.collide_point(*touch.pos):
                 self.num += 1
                 self.clear_widgets()
-        
-    
 
 class ClockStandalone(Label):
     def update(self, *args):
         self.text = get_time()
 
-class WatchFace(BoxLayout):
+class WatchWidget(RelativeLayout):
     def __init__(self, **kwargs):
-        super(BoxLayout, self).__init__(**kwargs)
+        super(RelativeLayout, self).__init__(**kwargs)
         with self.canvas.before:
             Rectangle(source='bgkd_test.png', size=Window.size)
         
-        layout = BoxLayout(orientation="vertical", size=Window.size)
+        layout = RelativeLayout(size=Window.size)
         self.add_widget(layout)
 
-        # project_bootleg = Label(text="Project: Bootleg", 
-        #                              color=(21/255, 230/255, 250/255, 1), 
-        #                              font_size=30,
-        #                              font_name="Glitchy")
-        project_bootleg = Image(source='project_bootleg.png', fit_mode="scale-down")
+        project_bootleg = Image(source='project_bootleg.png', 
+                                fit_mode="scale-down", 
+                                pos_hint={'x':0, 'y':0.334})
         layout.add_widget(project_bootleg)
 
-        image = Image(source='IMG_6934.png')
-        # image = Image(source='flag__img.png')
-        layout.add_widget(image)
+        flag = Image(source='IMG_6934.png', 
+                     pos_hint={'x':0, 'y':0.1},)
+        layout.add_widget(flag)
 
-        clock = ClockWidget(pos_hint={'x': 0, 'y': 0, 'center_x': 0.0}, 
-                                 font_size=28, 
-                                 color=(21/255, 230/255, 250/255, 1),
-                                 font_name="Glitchy",
-                                 )
-        Clock.schedule_interval(clock.update, 1.0 / 5.0)         
-        mini = BoxLayout(orientation="horizontal", pos_hint={'x':0.05, 'y':0})
+        sublayout = RelativeLayout(pos_hint={'x':0.025, 'y':0.0})
+
+        clock = ClockWidget(font_size=24, 
+                            font_name="Glitchy", 
+                            color=(21/255, 230/255, 250/255, 1),
+                            pos_hint={'x':0.25, 'y':-0.1025})
+        Clock.schedule_interval(clock.update, 1/5)
+        sublayout.add_widget(clock)
+
         destination = Image(source="destination.png", 
                             fit_mode="scale-down",
+                            size_hint_x=0.4,
+                            size_hint_y=0.4,
+                            pos_hint={'x':0.1, 'y':0.2}
                             )
-        mini.add_widget(destination)
-        mini.add_widget(clock)
-        layout.add_widget(mini)
+        sublayout.add_widget(destination)
+
+        layout.add_widget(sublayout)
         
-        bottom_smiley = Label(text='":smile:"')
+        bottom_smiley = Label(text='":smile:"', pos_hint={'x':0.0, 'y':-0.25})
         layout.add_widget(bottom_smiley)
 
 
-class HelloWorldApp(App):
+class Watchface(App):
     def build(self):
-        self.layout = WatchFace(orientation='vertical')
-        # self.lower_layout = BoxLayout(orientation="horizontal")
-
-        # self.project_bootleg = Label(text="Project: Bootleg", 
-        #                              color=(21/255, 230/255, 250/255, 1), 
-        #                              font_size=30,
-        #                              font_name="Glitchy")
-        # self.layout.add_widget(self.project_bootleg)
-
-        # self.image = Image(source='flag_img.png')
-        # self.layout.add_widget(self.image)
-
-        # self.clock = ClockWidget(pos_hint={'x': 0.5, 'y': 1, 'center_x': 0, 'center_y': .5}, 
-        #                          font_size=30, 
-        #                          color=(21/255, 230/255, 250/255, 1),
-        #                          font_name="Glitchy"
-        #                          ) # background_color=(0,0,0,1) <-- For Button
-        # Clock.schedule_interval(self.clock.update, 1.0 / 60.0)
-        # self.layout.add_widget(self.clock)  
-
-        # self.layout.add_widget(self.lower_layout)
-        # self.lower_layout.add_widget(Label(text="DESTINATION", font_name="Glitchy"))  
-        # self.lower_layout.add_widget(Label(text="q2"))  
-
-        
-
-        # self.bottom_smiley = Button(text='":smile:"', background_color=(0,0,0, 1))
-        # # self.layout.add_widget(self.bottom_smiley)
-
+        self.layout = WatchWidget()
         return self.layout
         
 if __name__ == "__main__":
-    HelloWorldApp().run()
+    Watchface().run()
