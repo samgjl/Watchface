@@ -1,4 +1,6 @@
 # Kivy:
+import os
+os.environ['KIVY_IMAGE'] = 'sdl2, gif'
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
@@ -18,8 +20,8 @@ from datetime import date
 from datetime import datetime
 
 # Declare window size:
-Config.set('graphics', 'width', '320')
-Config.set('graphics', 'height', '480')
+Config.set('graphics', 'width', '480')
+Config.set('graphics', 'height', '800')
 Config.set('graphics', 'resizable', False)
 Config.write()
 # Window.size = (320, 480)
@@ -34,11 +36,11 @@ def get_time():
 class ClockWidget(Label):
     num = 0
     def update(self, *args):
-        self.texts = ["-" + get_time() + "       ",
-                      "-1218             ", 
-                      "-1610             ", 
-                      "-42               ", 
-                      "-65               "]
+        self.texts = ["-" + get_time(),
+                      "-1218      ", 
+                      "-1610      ", 
+                      "-42        ", 
+                      "-65        "]
         self.text = self.texts[self.num % len(self.texts)]
 
     def on_touch_down(self, touch):
@@ -51,10 +53,12 @@ class ClockStandalone(Label):
         self.text = get_time()
 
 class WatchWidget(RelativeLayout):
+    def __init__(self, **args):
+        super(RelativeLayout, self).__init__(**args)
     def __init__(self, **kwargs):
         super(RelativeLayout, self).__init__(**kwargs)
         with self.canvas.before:
-            Rectangle(source='bgkd_test.png', size=Window.size)
+            Rectangle(source='bkgd_test.png', size=Window.size)
         
         layout = RelativeLayout(size=Window.size)
         self.add_widget(layout)
@@ -68,12 +72,12 @@ class WatchWidget(RelativeLayout):
                      pos_hint={'x':0, 'y':0.1},)
         layout.add_widget(flag)
 
-        sublayout = RelativeLayout(pos_hint={'x':0.025, 'y':0.0})
+        sublayout = RelativeLayout(pos_hint={'x':0.05, 'y':0.0})
 
-        clock = ClockWidget(font_size=24, 
+        clock = ClockWidget(font_size=26, 
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
-                            pos_hint={'x':0.25, 'y':-0.1025})
+                            pos_hint={'x':0.125, 'y':-0.1025})
         Clock.schedule_interval(clock.update, 1/5)
         sublayout.add_widget(clock)
 
