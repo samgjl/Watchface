@@ -5,24 +5,20 @@ import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.image import Image
-from kivy.uix.button import Button
-from kivy.core.window import Window
 from kivy.uix.relativelayout import RelativeLayout
-from kivy.uix.widget import Widget
+from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.core.text import LabelBase
-from kivy.core.text import FontContextManager as FCM
-from kivy.lang import Builder
-from kivy.graphics import *
+from kivy.graphics import Rectangle
 from kivy.config import Config
 # Date/Time
 from datetime import date
 from datetime import datetime
 
 # Declare window size:
-Config.set('graphics', 'width', '480')
-Config.set('graphics', 'height', '800')
-Config.set('graphics', 'resizable', False)
+Config.set('graphics', 'width', '320')
+Config.set('graphics', 'height', '480')
+# Config.set('graphics', 'resizable', False)
 Config.write()
 # Window.size = (320, 480)
 LabelBase.register(name='Glitchy', fn_regular='GlitchGoblin.ttf') # Font
@@ -36,7 +32,7 @@ def get_time():
 class ClockWidget(Label):
     num = 0
     def update(self, *args):
-        self.texts = ["-" + get_time(),
+        self.texts = [" -" + get_time(),
                       "-1218      ", 
                       "-1610      ", 
                       "-42        ", 
@@ -72,12 +68,12 @@ class WatchWidget(RelativeLayout):
                      pos_hint={'x':0, 'y':0.1},)
         layout.add_widget(flag)
 
-        sublayout = RelativeLayout(pos_hint={'x':0.05, 'y':0.0})
+        sublayout = RelativeLayout(pos_hint={'x':0, 'y':0.0})
 
-        clock = ClockWidget(font_size=26, 
+        clock = ClockWidget(font_size=24, 
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
-                            pos_hint={'x':0.125, 'y':-0.1025})
+                            pos_hint={'x':0.155, 'y':-0.1025})
         Clock.schedule_interval(clock.update, 1/5)
         sublayout.add_widget(clock)
 
