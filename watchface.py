@@ -16,11 +16,11 @@ from datetime import date
 from datetime import datetime
 
 # Declare window size:
-Config.set('graphics', 'width', '320')
-Config.set('graphics', 'height', '480')
+Config.set('graphics', 'width', '480')
+Config.set('graphics', 'height', '320')
 # Config.set('graphics', 'resizable', False)
 Config.write()
-# Window.size = (320, 480)
+Window.size = (480, 320)
 LabelBase.register(name='Glitchy', fn_regular='GlitchGoblin.ttf') # Font
 
 # Helper Functions:
@@ -48,6 +48,16 @@ class ClockStandalone(Label):
     def update(self, *args):
         self.text = get_time()
 
+class PowerButton(Image):
+    def poweroff(self):
+        cmd = "sudo halt"
+        os.system(cmd)
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.poweroff()
+
+
+
 class WatchWidget(RelativeLayout):
     def __init__(self, **args):
         super(RelativeLayout, self).__init__(**args)
@@ -70,10 +80,10 @@ class WatchWidget(RelativeLayout):
 
         sublayout = RelativeLayout(pos_hint={'x':0, 'y':0.0})
 
-        clock = ClockWidget(font_size=24, 
+        clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=30,
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
-                            pos_hint={'x':0.155, 'y':-0.1025})
+                            pos_hint={'x':0.1275, 'y':-0.1})
         Clock.schedule_interval(clock.update, 1/5)
         sublayout.add_widget(clock)
 
@@ -89,6 +99,13 @@ class WatchWidget(RelativeLayout):
         
         bottom_smiley = Label(text='":smile:"', pos_hint={'x':0.0, 'y':-0.25})
         layout.add_widget(bottom_smiley)
+
+        powerbutton = PowerButton(source="powerbutton.png", 
+                                  pos_hint={'x':0.9, 'y':0.9},
+                                  size_hint_x=0.1,
+                                  size_hint_y=0.1,
+                                  )
+        layout.add_widget(powerbutton)
 
 
 class Watchface(App):
