@@ -29,6 +29,7 @@ def get_date():
 def get_time():
     return datetime.now().strftime("%H-%M-%S")
 
+# Clock Widget that rotates between universes and the current time: 
 class ClockWidget(Label):
     num = 0
     def update(self, *args):
@@ -44,6 +45,7 @@ class ClockWidget(Label):
                 self.num += 1
                 self.clear_widgets()
 
+# Clock widget that is just a clock:
 class ClockStandalone(Label):
     def update(self, *args):
         self.text = get_time()
