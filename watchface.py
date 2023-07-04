@@ -1,6 +1,5 @@
 # Kivy:
 import os
-os.environ['KIVY_IMAGE'] = 'sdl2, gif'
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
