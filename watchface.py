@@ -1,5 +1,6 @@
 # Kivy:
 import os
+import sys
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
@@ -53,12 +54,14 @@ class ClockStandalone(Label):
 class QuitButton(Image):
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
-            quit()
+            sys.exit()
+            # quit()
 
 class PowerButton(Image):
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
-            quit()
+           os.system("sudo halt\n")
+           quit()
 
 
 
