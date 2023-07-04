@@ -49,10 +49,15 @@ class ClockStandalone(Label):
     def update(self, *args):
         self.text = get_time()
 
+class QuitButton(Image):
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            quit()
+
 class PowerButton(Image):
     def on_touch_down(self, touch):
-        if True or self.collide_point(*touch.pos):
-            # os.system("sudo halt\n")
+        if self.collide_point(*touch.pos):
+            os.system("sudo halt\n")
             quit()
 
 
@@ -99,8 +104,15 @@ class WatchWidget(RelativeLayout):
         bottom_smiley = Label(text='":smile:"', pos_hint={'x':0.0, 'y':-0.25})
         layout.add_widget(bottom_smiley)
 
-        powerbutton = PowerButton(source="powerbutton.png", 
+        quitbutton = QuitButton(source="quitbutton.png", 
                                   pos_hint={'x':0.9, 'y':0.9},
+                                  size_hint_x=0.1,
+                                  size_hint_y=0.1,
+                                  )
+        layout.add_widget(quitbutton)
+
+        powerbutton = PowerButton(source="powerbutton.png", 
+                                  pos_hint={'x':0.905, 'y':0.0},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
