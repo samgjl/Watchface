@@ -49,11 +49,9 @@ class ClockStandalone(Label):
         self.text = get_time()
 
 class PowerButton(Image):
-    def poweroff(self):
-        quit()
     def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
-            self.poweroff()
+        if True or self.collide_point(*touch.pos):
+            quit()
 
 
 
