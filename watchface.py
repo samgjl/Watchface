@@ -51,7 +51,7 @@ class ClockStandalone(Label):
 
 class QuitButton(Image):
     def on_touch_down(self, touch):
-        if self.collide_point(*touch.pos):
+        if True or self.collide_point(*touch.pos):
             quit()
 
 class PowerButton(Image):
