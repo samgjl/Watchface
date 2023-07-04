@@ -40,7 +40,7 @@ class ClockWidget(Label):
         self.text = self.texts[self.num % len(self.texts)]
 
     def on_touch_down(self, touch):
-            if True or self.collide_point(*touch.pos):
+            if self.collide_point(*touch.pos):
                 self.num += 1
                 self.clear_widgets()
 
