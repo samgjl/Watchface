@@ -50,8 +50,7 @@ class ClockStandalone(Label):
 
 class PowerButton(Image):
     def poweroff(self):
-        cmd = "sudo halt"
-        os.system(cmd)
+        quit()
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
             self.poweroff()
