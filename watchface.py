@@ -51,7 +51,7 @@ class ClockStandalone(Label):
 
 class QuitButton(Image):
     def on_touch_down(self, touch):
-        if True or self.collide_point(*touch.pos):
+        if self.collide_point(*touch.pos):
             quit()
 
 class PowerButton(Image):
@@ -105,14 +105,14 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(bottom_smiley)
 
         quitbutton = QuitButton(source="quitbutton.png", 
-                                  pos_hint={'x':0.9, 'y':0.9},
+                                  pos_hint={'x':0.9, 'y':0.85},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
         layout.add_widget(quitbutton)
 
         powerbutton = PowerButton(source="powerbutton.png", 
-                                  pos_hint={'x':0.905, 'y':0.0},
+                                  pos_hint={'x':0.9, 'y':0.05},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
