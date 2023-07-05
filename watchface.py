@@ -86,14 +86,13 @@ class WatchWidget(RelativeLayout):
                      pos_hint={'x':0, 'y':0.1},)
         layout.add_widget(flag)
 
-        sublayout = RelativeLayout(pos_hint={'x':0, 'y':0.0})
 
         clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=30,
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
                             pos_hint={'x':0.1275, 'y':-0.1}, )
         Clock.schedule_interval(clock.update, 1/5)
-        sublayout.add_widget(clock)
+        layout.add_widget(clock)
 
         destination = Image(source="destination.png", 
                             fit_mode="scale-down",
@@ -101,9 +100,7 @@ class WatchWidget(RelativeLayout):
                             size_hint_y=0.4,
                             pos_hint={'x':0.1, 'y':0.2}
                             )
-        sublayout.add_widget(destination)
-
-        layout.add_widget(sublayout)
+        layout.add_widget(destination)
         
         bottom_smiley = Label(text='":smile:"', pos_hint={'x':0.0, 'y':-0.25})
         layout.add_widget(bottom_smiley)
