@@ -113,12 +113,12 @@ class WatchWidget(RelativeLayout):
                                   )
         layout.add_widget(quitbutton)
 
-        powerbutton = PowerButton(source="powerbutton.png", 
-                                  pos_hint={'x':0.9, 'y':0.05},
-                                  size_hint_x=0.1,
-                                  size_hint_y=0.1,
-                                  )
-        layout.add_widget(powerbutton)
+        # powerbutton = PowerButton(source="powerbutton.png", 
+        #                           pos_hint={'x':0.9, 'y':0.05},
+        #                           size_hint_x=0.1,
+        #                           size_hint_y=0.1,
+        #                           )
+        # layout.add_widget(powerbutton)
 
 
 class Watchface(App):
