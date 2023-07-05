@@ -106,19 +106,19 @@ class WatchWidget(RelativeLayout):
         bottom_smiley = Label(text='":smile:"', pos_hint={'x':0.0, 'y':-0.25})
         layout.add_widget(bottom_smiley)
 
-        # quitbutton = QuitButton(source="quitbutton.png", 
-        #                           pos_hint={'x':0.9, 'y':0.85},
-        #                           size_hint_x=0.1,
-        #                           size_hint_y=0.1,
-        #                           )
-        # layout.add_widget(quitbutton)
-
-        powerbutton = QuitButton(source="powerbutton.png", 
+        quitbutton = QuitButton(source="quitbutton.png", 
                                   pos_hint={'x':0.9, 'y':0.05},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
-        layout.add_widget(powerbutton)
+        layout.add_widget(quitbutton)
+
+        # powerbutton = QuitButton(source="powerbutton.png", 
+        #                           pos_hint={'x':0.9, 'y':0.05},
+        #                           size_hint_x=0.1,
+        #                           size_hint_y=0.1,
+        #                           )
+        # layout.add_widget(powerbutton)
 
 
 class Watchface(App):
