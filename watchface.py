@@ -109,14 +109,14 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(bottom_smiley)
 
         quitbutton = QuitButton(source="quitbutton.png", 
-                                  pos_hint={'x':0.9, 'y':0.9},
+                                  pos_hint={'x':0.925, 'y':0.9},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
         layout.add_widget(quitbutton)
 
         powerbutton = QuitButton(source="powerbutton.png", 
-                                  pos_hint={'x':0.9, 'y':0.05},
+                                  pos_hint={'x':0.925, 'y':0.00},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
