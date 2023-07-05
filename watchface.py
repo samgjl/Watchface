@@ -77,7 +77,9 @@ class WatchWidget(RelativeLayout):
 
         project_bootleg = Image(source='project_bootleg.png', 
                                 fit_mode="scale-down", 
-                                pos_hint={'x':0, 'y':0.334})
+                                pos_hint={'x':0.075, 'y':0.375},
+                                size_hint_x=0.85,
+                                size_hint_y=0.85)
         layout.add_widget(project_bootleg)
 
         flag = Image(source='IMG_6934.png', 
@@ -107,18 +109,18 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(bottom_smiley)
 
         quitbutton = QuitButton(source="quitbutton.png", 
-                                  pos_hint={'x':0.9, 'y':0.05},
+                                  pos_hint={'x':0.9, 'y':0.85},
                                   size_hint_x=0.1,
                                   size_hint_y=0.1,
                                   )
         layout.add_widget(quitbutton)
 
-        # powerbutton = QuitButton(source="powerbutton.png", 
-        #                           pos_hint={'x':0.9, 'y':0.05},
-        #                           size_hint_x=0.1,
-        #                           size_hint_y=0.1,
-        #                           )
-        # layout.add_widget(powerbutton)
+        powerbutton = QuitButton(source="powerbutton.png", 
+                                  pos_hint={'x':0.9, 'y':0.05},
+                                  size_hint_x=0.1,
+                                  size_hint_y=0.1,
+                                  )
+        layout.add_widget(powerbutton)
 
 
 class Watchface(App):
