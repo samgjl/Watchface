@@ -70,7 +70,7 @@ class WatchWidget(RelativeLayout):
         with self.canvas.before:
             Rectangle(source='media/bkgd_horiz.png', size=Window.size)
         
-        layout = RelativeLayout(size_hint=(.65, .65), pos_hint={'x':0.165, 'y':0.165})
+        layout = RelativeLayout(size_hint=(.75, .75), pos_hint={'x':0.125, 'y':0.15})
         self.add_widget(layout)
 
         project_bootleg = Image(source='media/project_bootleg.png', 
@@ -89,7 +89,6 @@ class WatchWidget(RelativeLayout):
                      center_x=0.5,
                      center_y=0.5)
         layout.add_widget(flag)
-
 
         clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=24,
                             font_name="Glitchy", 
