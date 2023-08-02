@@ -68,7 +68,7 @@ class WatchWidget(RelativeLayout):
     def __init__(self, **kwargs):
         super(RelativeLayout, self).__init__(**kwargs)
         with self.canvas.before:
-            Rectangle(source='media/bkgd_horiz.png', size=Window.size)
+            Rectangle(source='media/bkgd_vert.png', size=Window.size)
         
         # layout = RelativeLayout(size_hint=(.75, .75), pos_hint={'x':0.125, 'y':0.15})
         layout = RelativeLayout(size=Window.size)
