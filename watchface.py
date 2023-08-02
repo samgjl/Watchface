@@ -83,14 +83,6 @@ class WatchWidget(RelativeLayout):
                                 size_hint_y=0.85)
         layout.add_widget(project_bootleg)
 
-        # flag = Image(source='media/uk_smile.png', 
-        #              pos_hint={'x':0.4, 'y':0.475},
-        #              size_hint_x=0.2,
-        #              size_hint_y=0.2,
-        #              center_x=0.5,
-        #              center_y=0.5)
-        # layout.add_widget(flag)
-
         clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=24,
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
@@ -114,6 +106,14 @@ class WatchWidget(RelativeLayout):
                             pos_hint={'x':0.1, 'y':0.15}
                             )
         layout.add_widget(destination)
+
+        flag = Image(source='media/uk_smile.png', 
+                     pos_hint={'x':0.4, 'y':0.475},
+                     size_hint_x=0.2,
+                     size_hint_y=0.2,
+                     center_x=0.5,
+                     center_y=0.5)
+        layout.add_widget(flag)
         
         bottom_smiley = Image(source="media/smile.png",
                               pos_hint={'x':0.45, 'y':-0.35},
