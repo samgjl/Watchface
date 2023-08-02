@@ -90,14 +90,14 @@ class WatchWidget(RelativeLayout):
         Clock.schedule_interval(clock.update, 1/5)
         layout.add_widget(clock)
 
-        # oval = Image(source="media/oval.png",
-        #              allow_stretch=True,
-        #              keep_ratio=False,
-        #              size_hint_x=0.9,
-        #              size_hint_y=0.66,
-        #              pos_hint={'x':0.04, 'y':0.0},
-        #              center=(0.5, 0.5))
-        # layout.add_widget(oval)
+        oval = Image(source="media/oval.png",
+                     allow_stretch=True,
+                     keep_ratio=False,
+                     size_hint_x=0.9,
+                     size_hint_y=0.66,
+                     pos_hint={'x':0.04, 'y':0.0},
+                     center=(0.5, 0.5))
+        layout.add_widget(oval)
         
         destination = Image(source="media/destination.png", 
                             fit_mode="scale-down",
