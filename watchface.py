@@ -83,13 +83,13 @@ class WatchWidget(RelativeLayout):
                                 size_hint_y=0.85)
         layout.add_widget(project_bootleg)
 
-        flag = Image(source='media/uk_smile.png', 
-                     pos_hint={'x':0.4, 'y':0.475},
-                     size_hint_x=0.2,
-                     size_hint_y=0.2,
-                     center_x=0.5,
-                     center_y=0.5)
-        layout.add_widget(flag)
+        # flag = Image(source='media/uk_smile.png', 
+        #              pos_hint={'x':0.4, 'y':0.475},
+        #              size_hint_x=0.2,
+        #              size_hint_y=0.2,
+        #              center_x=0.5,
+        #              center_y=0.5)
+        # layout.add_widget(flag)
 
         clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=24,
                             font_name="Glitchy", 
@@ -98,14 +98,14 @@ class WatchWidget(RelativeLayout):
         Clock.schedule_interval(clock.update, 1/5)
         layout.add_widget(clock)
 
-        oval = Image(source="media/oval.png",
-                     allow_stretch=True,
-                     keep_ratio=False,
-                     size_hint_x=0.9,
-                     size_hint_y=0.66,
-                     pos_hint={'x':0.04, 'y':0.0},
-                     center=(0.5, 0.5))
-        layout.add_widget(oval)
+        # oval = Image(source="media/oval.png",
+        #              allow_stretch=True,
+        #              keep_ratio=False,
+        #              size_hint_x=0.9,
+        #              size_hint_y=0.66,
+        #              pos_hint={'x':0.04, 'y':0.0},
+        #              center=(0.5, 0.5))
+        # layout.add_widget(oval)
         
         destination = Image(source="media/destination.png", 
                             fit_mode="scale-down",
