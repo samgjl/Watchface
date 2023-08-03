@@ -132,7 +132,7 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(quote_2)
 
         powerbutton = QuitButton(source="media/powerbutton.png", 
-                                  pos_hint={'x':.99, 'y':0.775},
+                                  pos_hint={'x':.95, 'y':0.875},
                                   size_hint_x=0.15,
                                   size_hint_y=0.15,
                                   )
