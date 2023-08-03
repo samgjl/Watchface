@@ -116,15 +116,15 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(flag)
         
         bottom_smiley = Image(source="media/smile.png",
-                              pos_hint={'x':0.45, 'y':-0.35},
+                              pos_hint={'x':0.45, 'y':-0.45},
                               size_hint_x=0.1,
                               )
         layout.add_widget(bottom_smiley)
         quote_1 = Image(source="media/open_quote.png",
-                        pos_hint={'x':0.4125, 'y':-0.325},
+                        pos_hint={'x':0.4125, 'y':-0.425},
                         size_hint_x=0.035)
         quote_2 = Image(source="media/close_quote.png",
-                        pos_hint={'x':0.55, 'y':-0.325},
+                        pos_hint={'x':0.55, 'y':-0.425},
                         size_hint_x=0.035)
         layout.add_widget(quote_1)
         layout.add_widget(quote_2)
