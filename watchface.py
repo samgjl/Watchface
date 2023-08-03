@@ -44,6 +44,8 @@ class ClockWidget(Label):
             if self.collide_point(*touch.pos):
                 self.num += 1
                 self.clear_widgets()
+            else:
+                quit()
 
 # Clock widget that is just a clock:
 class ClockStandalone(Label):
@@ -130,7 +132,7 @@ class WatchWidget(RelativeLayout):
         layout.add_widget(quote_2)
 
         powerbutton = QuitButton(source="media/powerbutton.png", 
-                                  pos_hint={'x':0.95, 'y':0.05},
+                                  pos_hint={'x':0.9, 'y':0.775},
                                   size_hint_x=0.15,
                                   size_hint_y=0.15,
                                   )
