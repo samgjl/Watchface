@@ -86,7 +86,7 @@ class WatchWidget(RelativeLayout):
         clock = ClockWidget(size_hint_x=1, size_hint_y=1, font_size=24,
                             font_name="Glitchy", 
                             color=(21/255, 230/255, 250/255, 1),
-                            pos_hint={'x':0.1275, 'y':-0.155}, )
+                            pos_hint={'x':0.1795, 'y':-0.155}, )
         Clock.schedule_interval(clock.update, 1/5)
         layout.add_widget(clock)
 
@@ -103,7 +103,7 @@ class WatchWidget(RelativeLayout):
                             fit_mode="scale-down",
                             size_hint_x=0.4,
                             size_hint_y=0.4,
-                            pos_hint={'x':0.1, 'y':0.15}
+                            pos_hint={'x':0.15, 'y':0.15}
                             )
         layout.add_widget(destination)
 
